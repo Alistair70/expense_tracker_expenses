@@ -1,6 +1,6 @@
 /////////REDIRECT BUTTON FUNTIONALITY
 document.getElementById("dashButton").addEventListener("click", function() {
-    window.location.href = 'https://expense-tracker-dash-board.netlify.app';
+    window.location.href = "https://dashboard.expense-tracker-demo.site";
 });
 document.getElementById("logout").addEventListener("click", function() {
     cookie_name = "expense_tracker_cookie_container"
