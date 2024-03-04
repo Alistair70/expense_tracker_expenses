@@ -114,7 +114,6 @@ document.getElementById("confirmExpenseBtn").addEventListener("click", function(
     else
     {
         saveExpenseToDatabase(expenseType, amount, date);
-        location.reload();
     }   
 });
 
@@ -129,6 +128,10 @@ function saveExpenseToDatabase(expenseType, amount, date) {
         body: JSON.stringify({ expenseType: expenseType, amount: amount, date: date,encoded_id:encoded_id})
     })
     .then(response => response.json())
+    .then(data => {
+        if(data.message === 'success')
+            location.reload();
+    });
     
 }
 
@@ -155,7 +158,6 @@ document.getElementById("confirmNewExpenseType").addEventListener("click", funct
     else
     {
         saveExpenseTypeToDatabase(newExpenseType);
-        location.reload();
     }   
 });
 
@@ -172,8 +174,8 @@ function saveExpenseTypeToDatabase(newExpenseType) {
     .then(response => response.json())
     .then(data => {
         if(data.message === 'exists')
-            document.getElementById("message").innerHTML = "Expense Type Already Exists";
-        else
+            document.getElementById("message").innerHTML = "Income Type Already Exists";
+        if(data.message === 'success')
             location.reload();
     });
 }
