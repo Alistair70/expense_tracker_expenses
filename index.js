@@ -66,7 +66,6 @@ function getExpenseTypes() {
             deleteButton.classList.add('btn_remove');
             deleteButton.addEventListener('click', function () {
                 remove_expense_type(type);
-                location.reload();
             });
             li.appendChild(deleteButton);
             expenseTypesList.appendChild(li);
@@ -84,8 +83,9 @@ function remove_expense_type(expenseType) {
         body: JSON.stringify({ expenseTypeTBR:expenseType , encoded_id:encoded_id }), 
     })
     .then(response => response.json())
-    .catch(error => {
-        console.error('Error:', error);
+    .then(data => {
+        if(data.message === 'success')
+            getExpenseTypes();
     });
 }
 
