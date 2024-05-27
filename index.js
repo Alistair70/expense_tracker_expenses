@@ -15,7 +15,7 @@ encoded_id = getEncodedID_or_Landing()
 // Request the expense types from the Python backend to populate the dropdown menu
 var expenseTypeDropdown = document.getElementById("expenseType");
 
-fetch('https://expense-tracker-aytr.onrender.com/get_expense_types', {
+fetch('https://main-py-server.onrender.com/get_expense_types', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // a button to delete it if the user requests to do so.
 function getExpenseTypes() {
     const expenseTypesList = document.getElementById('expenseTypesList');
-    fetch('https://expense-tracker-aytr.onrender.com/get_expense_types', {
+    fetch('https://main-py-server.onrender.com/get_expense_types', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ function getExpenseTypes() {
 
 //Function that takes an INCOME TYPE and sends a request to delete it from the database
 function remove_expense_type(expenseType) {
-    fetch('https://expense-tracker-aytr.onrender.com/remove_expense_type', {
+    fetch('https://main-py-server.onrender.com/remove_expense_type', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -120,7 +120,7 @@ document.getElementById("confirmExpenseBtn").addEventListener("click", function(
 // Function to request the back-end to save to validated inputs from above and 
 // saves them to the repesctive database.
 function saveExpenseToDatabase(expenseType, amount, date) {    
-    fetch('https://expense-tracker-aytr.onrender.com/add_expense', {
+    fetch('https://main-py-server.onrender.com/add_expense', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -164,7 +164,7 @@ document.getElementById("confirmNewExpenseType").addEventListener("click", funct
 // Function to request the back-end to save to validated inputs from above and 
 // saves them to the repesctive database.
 function saveExpenseTypeToDatabase(newExpenseType) {    
-    fetch('https://expense-tracker-aytr.onrender.com/add_expense_type', {
+    fetch('https://main-py-server.onrender.com/add_expense_type', {
         method: 'POST',        
         headers: {
             'Content-Type': 'application/json'
@@ -196,7 +196,7 @@ document.getElementById("editExpense").addEventListener("click", function() {
 // as well as button to delete it if the user reques to do so.
 function getExpenseEntries() {
     const dataGrid = document.getElementById('dataGrid');
-    fetch('https://expense-tracker-aytr.onrender.com/get_recent_expenses', {
+    fetch('https://main-py-server.onrender.com/get_recent_expenses', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -226,7 +226,7 @@ function getExpenseEntries() {
 
 //Function that takes the ID of a singular expense entry and sends a request to delete it from the database
 function deleteEntry(id) {
-    fetch('https://expense-tracker-aytr.onrender.com/delete_expense_entry', {        
+    fetch('https://main-py-server.onrender.com/delete_expense_entry', {        
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -264,5 +264,5 @@ function getEncodedID_or_Landing() {
             return value;
         }
     }
-    window.location.href = 'https://expense-tracker-aytr.onrender.com';
+    window.location.href = 'https://landing.expense-tracker-demo.site/';
 }
