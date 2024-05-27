@@ -177,10 +177,14 @@ function saveExpenseTypeToDatabase(newExpenseType) {
     })
     .then(response => response.json())
     .then(data => {
+        const expenseTypesList = document.getElementById('expenseTypesList');
         if(data.message === 'exists')
             document.getElementById("message").innerHTML = "Income Type Already Exists";
         if(data.message === 'success')
-            location.reload();
+        {
+                expenseTypesList.innerHTML = '';
+                getExpenseTypes();
+        }
     });
 }
 
