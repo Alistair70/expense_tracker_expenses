@@ -84,8 +84,12 @@ function remove_expense_type(expenseType) {
     })
     .then(response => response.json())
     .then(data => {
+        const expenseTypesList = document.getElementById('expenseTypesList');
         if(data.status === 'success')
+        {
+            expenseTypesList.innerHTML = '';
             getExpenseTypes();
+        }
     });
 }
 
