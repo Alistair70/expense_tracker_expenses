@@ -84,7 +84,7 @@ function remove_expense_type(expenseType) {
     })
     .then(response => response.json())
     .then(data => {
-        if(data.message === 'success')
+        if(data.status === 'success')
             getExpenseTypes();
     });
 }
